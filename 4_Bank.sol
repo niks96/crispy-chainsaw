@@ -3,13 +3,11 @@ pragma solidity >=0.7.0 <0.9.0;
 
 contract Bank {
     address private owner;
-    //address payable bankAddress;
 
     mapping (address => uint) public balanceOf; 
 
     constructor() {
         owner = msg.sender;
-        //bankAddress = address(this);
     }
 
     modifier isOwner() {
