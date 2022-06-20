@@ -11,7 +11,7 @@ contract Bank {
     }
 
     modifier isOwner() {
-        require(msg.sender == owner)
+        require(msg.sender == owner);
         _;
     }
 
@@ -22,6 +22,7 @@ contract Bank {
     function withdraw(uint _amount) public {
         require(balanceOf[msg.sender] >= _amount, "Insufficient funds.");
         balanceOf[msg.sender] -= _amount;
+        payable(msg.sender).transfer(_amount);
     }
 
     function showBankBalance() private view isOwner returns (uint) {
